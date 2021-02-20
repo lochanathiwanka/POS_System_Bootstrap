@@ -3,10 +3,6 @@
     margin: 0;
 }
 
-*, ::after, ::before {
-    box-sizing: border-box;
-}
-
 #wrapper {
     display: flex;
 }
