@@ -3,19 +3,13 @@
     margin: 0;
 }
 
-#wrapper {
-    display: flex;
-}
-
 .navbar-nav {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    position: fixed;
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
     background: #F5F5F5;
-    width: 22rem;
+    width: 288px;
     min-height: 100vh;
 }
 
@@ -118,6 +112,15 @@
     margin-bottom: 30px;
 }
 
+.navbar-nav > .side-nav > button > i {
+    position: absolute;
+    font-size: 20px;
+    color: black;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .navbar-nav > .side-nav > button > .icon {
     position: absolute;
     width: 25px;
@@ -140,9 +143,97 @@
     color: white;
 }
 
+.navbar-nav > .menu-list {
+    position: absolute;
+    list-style: none;
+    display: none;
+}
+.navbar-nav > .menu-list > li {
+    display: inline;
+}
+
+
+.navbar-nav > .menu-list > li > a {
+    padding-left: 60px;
+}
+
+.navbar-nav > .menu-list > li > a > i {
+    position: absolute;
+    font-size: 20px;
+    color: black;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navbar-nav > .menu-list > li > a > .icon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+}
+
+
+
 #item-table {
     height: 160px;
     overflow: auto;
+}
+
+/*Content Styling*/
+
+.container-fluid {
+    position: relative;
+    width: calc(100vw - 18rem) !important;
+    height: 100vh;
+    left: 144px;
+    background: lightslategray;
+}
+
+.container-fluid > .row > .title{
+    position: relative;
+}
+
+.container-fluid > .row > .title > h1 {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.container-fluid > .row > .title > img {
+    position: absolute;
+   width: 60px;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 310px;
+}
+
+.container-fluid > .row > .order-id{
+    position: relative;
+    height: 100px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-fluid > .row > .order-id > div{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 300px;
+    height: 50px;
+}
+
+.container-fluid > .row > .order-id > div > h3{
+    position: absolute;
+    font-size: 22px;
+}
+
+.container-fluid > .row > .order-id > div > #order-id{
+    font-size: 20px;
+    font-weight: 400;
+    right: 90px;
 }
 
 
@@ -150,25 +241,30 @@
 /*Media Query*/
 @media all and (max-width: 1024px) {
     .navbar-nav {
-        width: 6.5rem !important;
+        width: 104px !important;
     }
-
     .navbar-nav > .logo > .header-title {
         display: none;
     }
-
     .navbar-nav > .side-nav > button {
         width: 50px;
     }
-
+    .navbar-nav > .side-nav > button > i {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
     .navbar-nav > .side-nav > button > .icon {
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
     }
-
     .navbar-nav > .side-nav > button > a {
         display: none;
+    }
+    .container-fluid {
+        left: 52px;
+        width: calc(100vw - 104px) !important;
     }
 }
 
@@ -186,16 +282,69 @@
 
 @media all and (max-height: 600px) {
     .navbar-nav > .side-nav > #btn-manage-items {
-        transform: translateY(-60px);
+        transform: translateY(-40px);
     }
     .navbar-nav > .side-nav > #btn-manage-orders {
-        transform: translateY(-60px);
+        transform: translateY(-40px);
     }
     .navbar-nav > .side-nav > #btn-manage-customers {
-        transform: translateY(-60px);
+        transform: translateY(-40px);
     }
     .navbar-nav > .side-nav > #btn-new-order {
-        top: 230px;
+        top: 250px;
+    }
+}
+
+@media all and (max-height: 570px) {
+    .navbar-nav {
+        all: unset;
+        position: fixed;
+        z-index: 2;
+        width: 100vw !important;
+        height: 55px;
+        background: #F5F5F5;
+    }
+    .navbar-nav > .logo {
+        all: unset;
+        position: absolute;
+        left: 25px;
+        width: 300px;
+        height: 100%;
+    }
+    .navbar-nav > .logo > img {
+        all: unset;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .navbar-nav > .logo > .header-title {
+        all: unset;
+        display: initial;
+        position: absolute;
+        max-width: max-content;
+        font-family: "Montserrat", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        left: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .navbar-nav > .side-nav {
+        display: none;
+    }
+    .navbar-nav > .menu-list {
+        display: initial;
+        right: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .container-fluid {
+        top: 55px;
+        left: 0;
+        width: 100vw !important;
     }
 }
 

@@ -8,43 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="asserts/bootstrap/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!--<div class="wrapper">
-    <div class="logo">
-        <img src="asserts/icons/icon%20-%20hut.png" alt="logo" class="icon">
-        <h1 class="header-title">Food <span>Festive</span></h1>
-    </div>
-    <nav class="side-nav">
-        <button id="btn-manage-items">
-            <img src="asserts/icons/icon%20-%20burger.png" alt="icon" class="icon">
-            <a href="#">Manage Items</a>
-        </button>
-        <button id="btn-manage-orders">
-            <img src="asserts/icons/icon%20-%20cart.png" alt="icon" class="icon">
-            <a href="#">Manage Orders</a>
-        </button>
-        <button id="btn-manage-customers">
-            <img src="asserts/icons/item%20-%20customer.png" alt="icon" class="icon">
-            <a href="#">Manage Customers</a>
-        </button>
-        <button id="btn-new-order">
-            <img src="asserts/icons/icons8-plus-50.png" alt="icon" class="icon">
-            <a href="#">New Order</a>
-        </button>
-        <button id="btn-settings">
-            <img src="asserts/icons/icon%20-%20settings.png" alt="icon" class="icon">
-            <a href="#">Settings</a>
-        </button>
-        <button id="btn-about">
-            <img src="asserts/icons/icon%20-%20about.png" alt="icon" class="icon">
-            <a href="#">About</a>
-        </button>
-    </nav>
-</div>-->
-<div id="wrapper">
-<!--Sidebar-->
     <nav class="navbar-nav">
         <div class="logo">
             <img src="asserts/icons/icon%20-%20hut.png" alt="logo" class="icon">
@@ -52,42 +19,68 @@
         </div>
         <nav class="side-nav">
             <button id="btn-manage-items">
-                <img src="asserts/icons/icon%20-%20burger.png" alt="icon" class="icon">
+                <img src="asserts/icons/icon-burger-black.png" alt="icon" class="icon">
                 <a href="#">Manage Items</a>
             </button>
             <button id="btn-manage-orders">
-                <img src="asserts/icons/icon%20-%20cart.png" alt="icon" class="icon">
+                <i class="fas fa-cart-arrow-down"></i>
                 <a href="#">Manage Orders</a>
             </button>
             <button id="btn-manage-customers">
-                <img src="asserts/icons/item%20-%20customer.png" alt="icon" class="icon">
+                <i class="fas fa-user"></i>
                 <a href="#">Manage Customers</a>
             </button>
             <button id="btn-new-order">
-                <img src="asserts/icons/icons8-plus-50.png" alt="icon" class="icon">
+                <img src="asserts/icons/icon-plus-white.png" alt="icon" class="icon">
                 <a href="#">New Order</a>
             </button>
             <button id="btn-settings">
-                <img src="asserts/icons/icon%20-%20settings.png" alt="icon" class="icon">
+                <i class="fas fa-cog"></i>
                 <a href="#">Settings</a>
             </button>
             <button id="btn-about">
-                <img src="asserts/icons/icon%20-%20about.png" alt="icon" class="icon">
+                <i class="fas fa-info-circle"></i>
                 <a href="#">About</a>
             </button>
         </nav>
+        <ul class="menu-list">
+            <li id="list-manage-items"><a href="#"><img src="asserts/icons/icon-burger-black.png" alt="icon" class="icon"></a></li>
+            <li id="list-manage-orders"><a href="#"><i class="fas fa-cart-arrow-down"></i></a></li>
+            <li id="list-manage-customers"><a href="#"><i class="fas fa-user"></i></a></li>
+            <li id="list-new-order"><a href="#"><img src="asserts/icons/icon-plus-black.png" alt="icon" class="icon"></a></li>
+            <li id="list-settings"><a href="#"><i class="fas fa-cog"></i></a></li>
+            <li id="list-about"><a href="#"><i class="fas fa-info-circle"></i></a></li>
+        </ul>
     </nav>
     <div class="container-fluid">
         <div class="row border">
             <section class="title col-md-6 border">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, esse qui rem tempore voluptate voluptates. Aliquid aperiam asperiores aut dicta doloremque eveniet, fuga illum officia omnis perferendis, quibusdam quidem?</p>
+                <h1>Place Order</h1>
+                <img src="asserts/icons/icon%20-%20hamburger.png" alt="">
             </section>
-            <section class="order-id col-md-4 border">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda, esse qui rem tempore voluptate voluptates. Aliquid aperiam asperiores aut dicta doloremque eveniet, fuga illum officia omnis perferendis, quibusdam quidem?</p>
+            <section class="order-id col-md-6 border">
+                <div>
+                    <h3>New Order</h3>
+                    <h3 id="order-id">#D001</h3>
+                </div>
+            </section>
+            <section class="select-customer col-md-6 border">
+                <form action="#">
+                    <label for="customers">Select a Customer:</label>
+                    <select name="customers" id="customers">
+                        <option value="cust-1">C001</option>
+                        <option value="cust-2">C002</option>
+                        <option value="cust-3">C003</option>
+                        <option value="cust-4">C004</option>
+                    </select>
+                </form>
+            </section>
+            <section class="order-id2 col-md-6 border">
+                <h3>New Order</h3>
+                <h3 id="order-id2">#D001</h3>
             </section>
         </div>
     </div>
-</div>
 <script src="asserts/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
