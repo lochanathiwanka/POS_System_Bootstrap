@@ -262,13 +262,13 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.content > .row > #item-table {
+.content > .row > .item-table {
     position: relative;
     height: 220px;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
-.content > .row > #item-table > .title {
+.content > .row > .item-table > .title {
     position: absolute;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -278,8 +278,23 @@ body {
     transform: translateX(-50%);
 }
 
-.content > .row > #item-table > table {
+.content > .row > .item-table > div {
+    position: relative;
     transform: translateY(50px);
+    height: 164px;
+    overflow: auto;
+}
+
+.content > .row > .item-table > div > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.content > .row > .item-table > div > table tr th {
+    background-color: #dfdfdf;
+    position: sticky;
+    z-index: 100;
+    top: 0;
 }
 
 .content > .row > .addToCart-button {
