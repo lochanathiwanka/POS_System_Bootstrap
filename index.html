@@ -52,19 +52,19 @@
             <li id="list-about"><a href="#"><i class="fas fa-info-circle"></i></a></li>
         </ul>
     </nav>
-    <div class="container-fluid">
-        <div class="row border">
-            <section class="title col-md-6 border">
+    <div class="content container-fluid">
+        <div class="row">
+            <section class="title col-md-6 col-sm-6">
                 <h1>Place Order</h1>
                 <img src="asserts/icons/icon%20-%20hamburger.png" alt="">
             </section>
-            <section class="order-id col-md-6 border">
+            <section class="order-id col-md-6 col-sm-6">
                 <div>
                     <h3>New Order</h3>
                     <h3 id="order-id">#D001</h3>
                 </div>
             </section>
-            <section class="select-customer col-md-6 border">
+            <section class="select-customer col-md-6 col-sm-6 col-sm">
                 <form action="#">
                     <label for="customers">Select a Customer:</label>
                     <select name="customers" id="customers">
@@ -75,12 +75,92 @@
                     </select>
                 </form>
             </section>
-            <section class="order-id2 col-md-6 border">
-                <h3>New Order</h3>
-                <h3 id="order-id2">#D001</h3>
+            <section id="item-table" class="col-md-6 col-sm-6">
+                <h3 class="title">Items</h3>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">Unite-Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">P001</th>
+                        <td>Star Gold White Sugar (1kg)</td>
+                        <td>50</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P002</th>
+                        <td>Keeri Samba (5kg)</td>
+                        <td>40</td>
+                        <td>700</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P003</th>
+                        <td>Maliban Biscuit Kritz (170g)</td>
+                        <td>30</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P004</th>
+                        <td>Happy Cow Cheese Wedges (200g)</td>
+                        <td>20</td>
+                        <td>627</td>
+                    </tr>
+                    </tbody>
+                </table>
             </section>
+            <section class="col-md-6 col-sm-6"></section>
+            <section class="addToCart-button col-md-6 col-sm-6">
+                <label for="txtQTY">QTY</label>
+                <input type="text" id="txtQTY">
+                <button id="btnAdd">Add</button>
+            </section>
+            <div id="cart-table" class="container-fluid col-md-12 col-sm-12 border">
+                <h3 class="title">Cart</h3>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">Unite-Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">P001</th>
+                        <td>Star Gold White Sugar (1kg)</td>
+                        <td>50</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P002</th>
+                        <td>Keeri Samba (5kg)</td>
+                        <td>40</td>
+                        <td>700</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P003</th>
+                        <td>Maliban Biscuit Kritz (170g)</td>
+                        <td>30</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">P004</th>
+                        <td>Happy Cow Cheese Wedges (200g)</td>
+                        <td>20</td>
+                        <td>627</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-<script src="asserts/bootstrap/js/bootstrap.js"></script>
+    <script src="asserts/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
