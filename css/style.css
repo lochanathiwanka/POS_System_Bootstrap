@@ -264,8 +264,7 @@ body {
 
 .content > .row > .item-table {
     position: relative;
-    height: 220px;
-    /*overflow: auto;*/
+    height: 280px;
 }
 
 .content > .row > .item-table > .title {
@@ -278,38 +277,64 @@ body {
     transform: translateX(-50%);
 }
 
-.content > .row > .item-table > div {
+.content > .row > .item-table > .tbl {
     position: relative;
     transform: translateY(50px);
     height: 164px;
     overflow: auto;
 }
 
-.content > .row > .item-table > div > table {
+.content > .row > .item-table > .tbl > table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.content > .row > .item-table > div > table tr th {
+.content > .row > .item-table > .tbl > table tr th {
     background-color: #dfdfdf;
     position: sticky;
     z-index: 100;
     top: 0;
 }
 
-.content > .row > .addToCart-button {
+.content > .row > .item-table > .footer {
+    position: absolute;
     display: flex;
+    font-family: 'Montserrat', sans-serif;
+    width: 300px;
+    height: 25px;
+    bottom: 0;
 }
 
-.content > .row > .addToCart-button > button {
+.content > .row > .item-table > .footer > #txtQTY {
+    position: absolute;
+    left: 50px;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.content > .row > .item-table > .footer > button {
+    position: absolute;
     width: 80px;
     border-radius: 20px;
+    font-weight: 700;
+    color: white;
     background: #738580;
     border: none;
     box-shadow: 3px 2px 7px 1px #c3c3c3;
+    transition: all 0.6s ease;
+    right: 0;
 }
 
-.content > .row > .addToCart-button > #txtQTY {
+.content > .row > .item-table > .footer > button:hover {
+    transform: translateY(-15px);
+    transition: all 0.6s ease;
+}
+
+.content > .row > .item-table > .footer > button:focus {
+    outline: none !important;
+}
+
+.content > .row > .item-table > .footer > #txtQTY {
     width: 100px;
 }
 
@@ -344,31 +369,48 @@ body {
     }
 }
 
-@media all and (max-width: 828px) and (min-height: 570px) {
+@media all and (max-width: 832px) and (min-height: 570px) {
     .content > .row > .title > h1 {
         padding-left: 20px;
     }
 }
 
-@media all and (max-width: 724px) {
+@media all and (max-width: 737px) {
+    .content > .row > .item-table {
+        height: 335px;
+    }
+    .content > .row > .item-table > .footer {
+        width: 155px;
+        height: 80px;
+    }
+    .content > .row > .item-table > .footer > #txtQTY {
+        height: 25px;
+    }
+    .content > .row > .item-table > .footer > button {
+        bottom: 0;
+        left: 0;
+    }
+}
+
+@media all and (max-width: 728px) {
     .content > .row > .title > h1 {
         padding-left: 20px;
     }
 }
 
-@media all and (max-width: 708px) and (min-height: 570px) {
+@media all and (max-width: 712px) and (min-height: 570px) {
     .content > .row > .title > h1 {
         padding-left: 10px;
     }
 }
 
-@media all and (max-width: 688px) and (min-height: 570px) {
+@media all and (max-width: 692px) and (min-height: 570px) {
     .content > .row > .title > h1 {
         padding-left: 5px;
     }
 }
 
-@media all and (max-width: 678px) and (min-height: 570px) {
+@media all and (max-width: 682px) and (min-height: 570px) {
     .content > .row > .title > h1 {
         font-size: 25px;
     }
@@ -433,6 +475,19 @@ body {
 @media all and (max-width: 575px) {
     .content > .row > .select-customer {
         height: 50px ;
+    }
+    .content > .row > .item-table {
+        height: 280px;
+    }
+    .content > .row > .item-table > .footer {
+        width: 300px;
+        height: 25px;
+    }
+    .content > .row > .item-table > .footer > #txtQTY {
+        height: 100%;
+    }
+    .content > .row > .item-table > .footer > button {
+        left: 200px;
     }
 }
 
