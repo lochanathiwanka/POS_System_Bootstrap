@@ -24,7 +24,7 @@
 /*----------------------------------------------*/
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .navbar-nav {
@@ -201,10 +201,7 @@ body {
 .content {
     position: relative;
     width: calc(100vw - 18rem) !important;
-    height: 100vh;
     left: 144px;
-    /*background: lightslategray;*/
-    overflow: auto;
 }
 
 .content > .row > .title{
@@ -281,51 +278,6 @@ body {
 .content > .row > .select-customer > div > input:focus{
     outline: none !important;
 }
-
-/*
-.content > .row > .select-customer > div > label{
-    position: absolute;
-    width: 100px;
-    height: 28px;
-    border-radius: 20px;
-    background: green;
-    text-align: center;
-}
-
-.content > .row > .select-customer > div > input{
-    position: absolute;
-    right: 0;
-    height: 28px;
-    border-radius: 20px;
-}
-
-.content > .row > .select-customer > div > .lblName {
-    top: 0;
-    left: 0;
-}
-
-.content > .row > .select-customer > div > #txtName {
-    top: 0;
-}
-
-.content > .row > .select-customer > div > .lblAddress {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.content > .row > .select-customer > div > #txtAddress {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.content > .row > .select-customer > div > .lblContact {
-    bottom: 0;
-    left: 0;
-}
-
-.content > .row > .select-customer > div > #txtContact {
-    bottom: 0;
-}*/
 
 .content > .row > .item-table {
     position: relative;
@@ -452,8 +404,8 @@ body {
     position: absolute;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    transform: translateX(20px);
-    bottom: 0;
+    top: 50%;
+    transform: translate(20px, -50%);
 }
 
 .content > .row > .total > input {
@@ -463,8 +415,8 @@ body {
     width: 100px;
     margin-left: 10px;
     border-radius: 5px;
-    transform: translateX(60px);
-    bottom: 0;
+    top: 50%;
+    transform: translate(60px, -50%);
 }
 
 .content > .row > .total > input:focus {
@@ -474,12 +426,13 @@ body {
 .content > .row > .place-order-button {
     position: relative;
     display: flex;
-    height: 80px;
+    height: 136px;
 }
 
 .content > .row > .place-order-button > div {
     position: absolute;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .content > .row > .place-order-button > div > button {
@@ -678,6 +631,11 @@ body {
 }
 
 @media all and (max-height: 570px) {
+    .wrp {
+        position: relative;
+        width: 100vw !important;
+        height: 55px;
+    }
     .navbar-nav {
         all: unset;
         position: fixed;
@@ -724,10 +682,8 @@ body {
         transform: translateY(-50%);
     }
     .content {
-        top: 55px;
         left: 0;
         width: 100vw !important;
-        /*overflow: auto;*/
     }
 }
 

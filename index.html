@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
     <title>Food Festive</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="asserts/bootstrap/css/bootstrap.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="asserts/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
+<div class="wrp">
     <nav class="navbar-nav">
         <div class="logo">
-            <img src="asserts/icons/icon%20-%20hut.png" alt="logo" class="icon">
+            <img alt="logo" class="icon" src="asserts/icons/icon%20-%20hut.png">
             <h1 class="header-title">Food <span>Festive</span></h1>
         </div>
         <nav class="side-nav">
             <button id="btn-manage-items">
-                <img src="asserts/icons/icon-burger-black.png" alt="icon" class="icon">
+                <img alt="icon" class="icon" src="asserts/icons/icon-burger-black.png">
                 <a href="#">Manage Items</a>
             </button>
             <button id="btn-manage-orders">
@@ -31,7 +33,7 @@
                 <a href="#">Manage Customers</a>
             </button>
             <button id="btn-new-order">
-                <img src="asserts/icons/icon-plus-white.png" alt="icon" class="icon">
+                <img alt="icon" class="icon" src="asserts/icons/icon-plus-white.png">
                 <a href="#">New Order</a>
             </button>
             <button id="btn-settings">
@@ -44,134 +46,137 @@
             </button>
         </nav>
         <ul class="menu-list">
-            <li id="list-manage-items"><a href="#"><img src="asserts/icons/icon-burger-black.png" alt="icon" class="icon"></a></li>
+            <li id="list-manage-items"><a href="#"><img alt="icon" class="icon"
+                                                        src="asserts/icons/icon-burger-black.png"></a></li>
             <li id="list-manage-orders"><a href="#"><i class="fas fa-cart-arrow-down"></i></a></li>
             <li id="list-manage-customers"><a href="#"><i class="fas fa-user"></i></a></li>
-            <li id="list-new-order"><a href="#"><img src="asserts/icons/icon-plus-black.png" alt="icon" class="icon"></a></li>
+            <li id="list-new-order"><a href="#"><img alt="icon" class="icon" src="asserts/icons/icon-plus-black.png"></a>
+            </li>
             <li id="list-settings"><a href="#"><i class="fas fa-cog"></i></a></li>
             <li id="list-about"><a href="#"><i class="fas fa-info-circle"></i></a></li>
         </ul>
     </nav>
-    <div class="content container-fluid">
-        <div class="row">
-            <section class="title col-md-6 col-sm-6">
-                <h1>Place Order</h1>
-                <img src="asserts/icons/icon%20-%20hamburger.png" alt="">
-            </section>
-            <section class="order-id col-md-6 col-sm-6">
-                <div>
-                    <h3>New Order</h3>
-                    <h3 id="order-id">#D001</h3>
-                </div>
-            </section>
-            <section class="select-customer col-md-6 col-sm-6 col-sm">
-                <form action="#">
-                    <label for="customers">Select a Customer:</label>
-                    <select name="customers" id="customers">
-                        <option value="select">Select</option>
-                        <option value="cust-1">C001</option>
-                        <option value="cust-2">C002</option>
-                        <option value="cust-3">C003</option>
-                        <option value="cust-4">C004</option>
-                    </select>
-                </form>
-                <div>
-                    <label class="lblName" for="txtName">Name</label>
-                    <input type="text" id="txtName">
-                    <label class="lblAddress" for="txtAddress">Address</label>
-                    <input type="text" id="txtAddress">
-                    <label class="lblContact" for="txtContact">Contact</label>
-                    <input type="text" id="txtContact">
-                </div>
-            </section>
-            <section class="item-table col-md-6 col-sm-6">
-                <h3 class="title">Items</h3>
-                <div class="tbl">
-                    <table id="tblItems" class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Code</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">QTY</th>
-                            <th scope="col">Unite-Price</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td scope="row">P001</td>
-                            <td>Star Gold White Sugar (1kg)</td>
-                            <td>50</td>
-                            <td>110</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">P002</td>
-                            <td>Keeri Samba (5kg)</td>
-                            <td>40</td>
-                            <td>700</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">P003</td>
-                            <td>Maliban Biscuit Kritz (170g)</td>
-                            <td>30</td>
-                            <td>160</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">P004</td>
-                            <td>Happy Cow Cheese Wedges (200g)</td>
-                            <td>20</td>
-                            <td>627</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="footer">
-                    <label for="txtQTY">QTY</label>
-                    <input type="text" id="txtQTY">
-                    <button id="btnAdd">Add</button>
-                </div>
-            </section>
-            <section class="cart-table col-md-12 col-sm-12">
-                <h3 class="title">Cart</h3>
-                <div class="tbl">
-                    <table id="tblCart" class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Code</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">QTY</th>
-                            <th scope="col">Unite-Price</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td scope="row">P001</td>
-                            <td>Star Gold White Sugar (1kg)</td>
-                            <td>2</td>
-                            <td>220</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">P003</td>
-                            <td>Maliban Biscuit Kritz (170g)</td>
-                            <td>3</td>
-                            <td>480</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            <section class="total col-md-6 col-sm-6">
-                <label for="txtTotal">Total</label>
-                <input type="text" id="txtTotal">
-            </section>
-            <section class="place-order-button col-md-6 col-sm-6">
-                <div>
-                    <button id="btnRemove">Remove</button>
-                    <button id="btnClear">Clear</button>
-                    <button id="btnPlaceOrder">Place Order</button>
-                </div>
-            </section>
-        </div>
+</div>
+<div class="content container-fluid">
+    <div class="row">
+        <section class="title col-md-6 col-sm-6">
+            <h1>Place Order</h1>
+            <img alt="" src="asserts/icons/icon%20-%20hamburger.png">
+        </section>
+        <section class="order-id col-md-6 col-sm-6">
+            <div>
+                <h3>New Order</h3>
+                <h3 id="order-id">#D001</h3>
+            </div>
+        </section>
+        <section class="select-customer col-md-6 col-sm-6 col-sm">
+            <form action="#">
+                <label for="customers">Select a Customer:</label>
+                <select id="customers" name="customers">
+                    <option value="select">Select</option>
+                    <option value="cust-1">C001</option>
+                    <option value="cust-2">C002</option>
+                    <option value="cust-3">C003</option>
+                    <option value="cust-4">C004</option>
+                </select>
+            </form>
+            <div>
+                <label class="lblName" for="txtName">Name</label>
+                <input id="txtName" type="text">
+                <label class="lblAddress" for="txtAddress">Address</label>
+                <input id="txtAddress" type="text">
+                <label class="lblContact" for="txtContact">Contact</label>
+                <input id="txtContact" type="text">
+            </div>
+        </section>
+        <section class="item-table col-md-6 col-sm-6">
+            <h3 class="title">Items</h3>
+            <div class="tbl">
+                <table class="table table-hover" id="tblItems">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">Unite-Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">P001</td>
+                        <td>Star Gold White Sugar (1kg)</td>
+                        <td>50</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">P002</td>
+                        <td>Keeri Samba (5kg)</td>
+                        <td>40</td>
+                        <td>700</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">P003</td>
+                        <td>Maliban Biscuit Kritz (170g)</td>
+                        <td>30</td>
+                        <td>160</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">P004</td>
+                        <td>Happy Cow Cheese Wedges (200g)</td>
+                        <td>20</td>
+                        <td>627</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="footer">
+                <label for="txtQTY">QTY</label>
+                <input id="txtQTY" type="text">
+                <button id="btnAdd">Add</button>
+            </div>
+        </section>
+        <section class="cart-table col-md-12 col-sm-12">
+            <h3 class="title">Cart</h3>
+            <div class="tbl">
+                <table class="table table-hover" id="tblCart">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">Unite-Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">P001</td>
+                        <td>Star Gold White Sugar (1kg)</td>
+                        <td>2</td>
+                        <td>220</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">P003</td>
+                        <td>Maliban Biscuit Kritz (170g)</td>
+                        <td>3</td>
+                        <td>480</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="total col-md-6 col-sm-6">
+            <label for="txtTotal">Total</label>
+            <input id="txtTotal" type="text">
+        </section>
+        <section class="place-order-button col-md-6 col-sm-6">
+            <div>
+                <button id="btnRemove">Remove</button>
+                <button id="btnClear">Clear</button>
+                <button id="btnPlaceOrder">Place Order</button>
+            </div>
+        </section>
     </div>
-    <script src="asserts/bootstrap/js/bootstrap.js"></script>
+</div>
+<script src="asserts/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
