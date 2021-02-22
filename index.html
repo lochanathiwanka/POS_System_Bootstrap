@@ -68,12 +68,21 @@
                 <form action="#">
                     <label for="customers">Select a Customer:</label>
                     <select name="customers" id="customers">
+                        <option value="select">Select</option>
                         <option value="cust-1">C001</option>
                         <option value="cust-2">C002</option>
                         <option value="cust-3">C003</option>
                         <option value="cust-4">C004</option>
                     </select>
                 </form>
+                <div>
+                    <label class="lblName" for="txtName">Name</label>
+                    <input type="text" id="txtName">
+                    <label class="lblAddress" for="txtAddress">Address</label>
+                    <input type="text" id="txtAddress">
+                    <label class="lblContact" for="txtContact">Contact</label>
+                    <input type="text" id="txtContact">
+                </div>
             </section>
             <section class="item-table col-md-6 col-sm-6">
                 <h3 class="title">Items</h3>
@@ -121,7 +130,7 @@
                     <button id="btnAdd">Add</button>
                 </div>
             </section>
-            <section id="cart-table" class="container-fluid col-md-12 col-sm-12">
+            <section class="cart-table col-md-12 col-sm-12">
                 <h3 class="title">Cart</h3>
                 <div class="tbl">
                     <table id="tblCart" class="table table-hover">
@@ -137,29 +146,28 @@
                         <tr>
                             <td scope="row">P001</td>
                             <td>Star Gold White Sugar (1kg)</td>
-                            <td>50</td>
-                            <td>110</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">P002</td>
-                            <td>Keeri Samba (5kg)</td>
-                            <td>40</td>
-                            <td>700</td>
+                            <td>2</td>
+                            <td>220</td>
                         </tr>
                         <tr>
                             <td scope="row">P003</td>
                             <td>Maliban Biscuit Kritz (170g)</td>
-                            <td>30</td>
-                            <td>160</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">P004</td>
-                            <td>Happy Cow Cheese Wedges (200g)</td>
-                            <td>20</td>
-                            <td>627</td>
+                            <td>3</td>
+                            <td>480</td>
                         </tr>
                         </tbody>
                     </table>
+                </div>
+            </section>
+            <section class="total col-md-6 col-sm-6">
+                <label for="txtTotal">Total</label>
+                <input type="text" id="txtTotal">
+            </section>
+            <section class="place-order-button col-md-6 col-sm-6">
+                <div>
+                    <button id="btnRemove">Remove</button>
+                    <button id="btnClear">Clear</button>
+                    <button id="btnPlaceOrder">Place Order</button>
                 </div>
             </section>
         </div>

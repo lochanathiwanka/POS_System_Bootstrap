@@ -258,9 +258,74 @@ body {
 .content > .row > .select-customer > form{
     position: absolute;
     left: 50%;
+    transform: translateX(-50%);
+}
+
+.content > .row > .select-customer > div{
+    position: absolute;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.content > .row > .select-customer > div > input{
+    border-radius: 20px;
+    border: none;
+    background: #EAEAEA;
+}
+
+.content > .row > .select-customer > div > input:focus{
+    outline: none !important;
+}
+
+/*
+.content > .row > .select-customer > div > label{
+    position: absolute;
+    width: 100px;
+    height: 28px;
+    border-radius: 20px;
+    background: green;
+    text-align: center;
+}
+
+.content > .row > .select-customer > div > input{
+    position: absolute;
+    right: 0;
+    height: 28px;
+    border-radius: 20px;
+}
+
+.content > .row > .select-customer > div > .lblName {
+    top: 0;
+    left: 0;
+}
+
+.content > .row > .select-customer > div > #txtName {
+    top: 0;
+}
+
+.content > .row > .select-customer > div > .lblAddress {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content > .row > .select-customer > div > #txtAddress {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content > .row > .select-customer > div > .lblContact {
+    bottom: 0;
+    left: 0;
+}
+
+.content > .row > .select-customer > div > #txtContact {
+    bottom: 0;
+}*/
 
 .content > .row > .item-table {
     position: relative;
@@ -310,6 +375,12 @@ body {
     left: 50px;
     border-radius: 5px;
     height: 100%;
+    border: none;
+    background: #EAEAEA;
+}
+
+.content > .row > .item-table > .footer > #txtQTY:focus {
+    outline: none !important;
 }
 
 .content > .row > .item-table > .footer > button {
@@ -336,6 +407,107 @@ body {
 
 .content > .row > .item-table > .footer > #txtQTY {
     width: 100px;
+}
+
+.content > .row > .cart-table {
+    position: relative;
+    height: 250px;
+}
+
+.content > .row > .cart-table > .title {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.content > .row > .cart-table > .tbl {
+    position: relative;
+    transform: translateY(70px);
+    height: 164px;
+    overflow: auto;
+}
+
+.content > .row > .cart-table > .tbl > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.content > .row > .cart-table > .tbl > table tr th {
+    background-color: #716b6b;
+    color: white;
+    position: sticky;
+    z-index: 100;
+    top: 0;
+}
+
+.content > .row > .total {
+    position: relative;
+}
+
+.content > .row > .total > label {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transform: translateX(20px);
+    bottom: 0;
+}
+
+.content > .row > .total > input {
+    position: absolute;
+    border: none;
+    background: #EAEAEA;
+    width: 100px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transform: translateX(60px);
+    bottom: 0;
+}
+
+.content > .row > .total > input:focus {
+    outline: none!important;
+}
+
+.content > .row > .place-order-button {
+    position: relative;
+    display: flex;
+    height: 80px;
+}
+
+.content > .row > .place-order-button > div {
+    position: absolute;
+    bottom: 0;
+}
+
+.content > .row > .place-order-button > div > button {
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    margin-right: 10px;
+    border: none;
+    background: #EAEAEA;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    box-shadow: 3px 2px 7px 1px #c3c3c3;
+    transition: all 0.6s ease;
+}
+
+.content > .row > .place-order-button > div > button:hover {
+    transform: translateY(-15px);
+    transition: all 0.6s ease;
+}
+
+.content > .row > .place-order-button > div > button:focus {
+    outline: none !important;
+}
+
+.content > .row > .place-order-button > div > #btnPlaceOrder {
+    background: #E41151;
+    color: white;
+    width: 120px;
 }
 
 
@@ -372,6 +544,20 @@ body {
 @media all and (max-width: 832px) and (min-height: 570px) {
     .content > .row > .title > h1 {
         padding-left: 20px;
+    }
+}
+
+@media all and (max-width: 750px) {
+    .content > .row > .select-customer > div{
+        all: unset;
+        position: absolute;
+        display: grid;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 5px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -474,7 +660,7 @@ body {
 
 @media all and (max-width: 575px) {
     .content > .row > .select-customer {
-        height: 50px ;
+        height: 250px ;
     }
     .content > .row > .item-table {
         height: 280px;
