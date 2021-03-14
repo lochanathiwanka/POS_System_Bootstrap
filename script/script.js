@@ -150,22 +150,29 @@ $("#btnAdd").click(function () {
     let check = isExist(itemDetails[0]);
     if (!check) {
         if (itemDetails[0] !== undefined) {
+            let oldTot = parseFloat($("#txtTotal").val());
+            if (isNaN(oldTot)) {
+                oldTot = 0;
+            }
+            let newTot = parseInt(newQty.val()) * parseFloat(itemDetails[2]);
+            let tot = oldTot + newTot;
+
             $("#tblCart > tbody").append("<tr>" +
                 "<td>"+itemDetails[0]+"</td>" +
                 "<td>"+itemDetails[1]+"</td>" +
                 "<td>"+newQty.val()+"</td>" +
-                "<td>"+itemDetails[2]+"</td>" +
+                "<td>"+newTot+"</td>" +
                 "</tr>");
+
+            setTotValue(tot);
+
             itemDetails.length = 0;
 
             $("#tblItems > tbody > tr").css({
                 "background-color" : "initial",
                 "color" : "initial"
             });
-            const clearQtyField = () => {
-                $("#txtQTY").val("");
-            }
-            clearQtyField();
+            newQty.val("");
         }
     } else {
         alert("Item is already in Cart!");
@@ -226,10 +233,25 @@ $("#tblCart > tbody").on("click", "tr", function () {
 
 /*Delete an item from the Cart*/
 $("#btnRemove").click(function () {
+    let unitPrice = parseFloat(selectedRowOfCart.find("td:eq(3)").text());
+    let tot = parseFloat($("#txtTotal").val()) - unitPrice;
+    setTotValue(tot);
+
+    let rowCount = $("#tblCart > tbody > tr").length;
+    console.log(rowCount);
+    if (rowCount === 1) {
+        setTotValue("");
+    }
     selectedRowOfCart.remove();
 });
 
 /*Clear Cart*/
 $("#btnClear").click(function () {
     $("#tblCart > tbody").empty();
+    $("#txtTotal").val("");
 });
+
+/*Set Total*/
+let setTotValue = (value) => {
+    $("#txtTotal").val(value);
+}
