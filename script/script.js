@@ -15,6 +15,11 @@ function showPlaceOrderForm() {
         "background-color" : "initial",
         "color" : "initial"
     });
+    $("#tblCart > tbody > tr").css({
+        "background-color" : "initial",
+        "color" : "initial"
+    });
+    $("#txtQTY").val("");
     $("#placeOrderForm").css("display", "block");
     $("#manageItemForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
@@ -141,32 +146,40 @@ $("#tblItems > tbody").on("click", "tr", function () {
 
 /*Add item to Cart*/
 $("#btnAdd").click(function () {
-    let newQty = $("#txtQTY").val();
+    let newQty = $("#txtQTY");
     let check = isExist(itemDetails[0]);
-    if (check) {
-        alert("Item is already in Cart!");
-    } else {
-        $("#tblCart > tbody").append("<tr>" +
-            "<td>"+itemDetails[0]+"</td>" +
-            "<td>"+itemDetails[1]+"</td>" +
-            "<td>"+newQty+"</td>" +
-            "<td>"+itemDetails[2]+"</td>" +
-            "</tr>");
-        itemDetails.length = 0;
+    if (!check) {
+        if (itemDetails[0] !== undefined) {
+            $("#tblCart > tbody").append("<tr>" +
+                "<td>"+itemDetails[0]+"</td>" +
+                "<td>"+itemDetails[1]+"</td>" +
+                "<td>"+newQty.val()+"</td>" +
+                "<td>"+itemDetails[2]+"</td>" +
+                "</tr>");
+            itemDetails.length = 0;
 
+            $("#tblItems > tbody > tr").css({
+                "background-color" : "initial",
+                "color" : "initial"
+            });
+            const clearQtyField = () => {
+                $("#txtQTY").val("");
+            }
+            clearQtyField();
+        }
+    } else {
+        alert("Item is already in Cart!");
         $("#tblItems > tbody > tr").css({
             "background-color" : "initial",
             "color" : "initial"
         });
-        const clearQtyField = () => {
-            $("#txtQTY").val("");
-        }
-        clearQtyField();
+        newQty.val("");
     }
 });
 
+/*Check if item is already in the Cart??*/
 const isExist = function (code) {
-    $("#tblCart > tbody  > tr").each(function() {
+    /*$("#tblCart > tbody  > tr").each(function() {
         $(this).find("td:eq(0)").each(function(){
             if ($(this).text() === code) {
                 console.log("this text : "+$(this).text());
@@ -177,5 +190,46 @@ const isExist = function (code) {
             }
             // console.log($(this).text());
         });
-    });
+    });*/
+
+    /*let tbl = document.getElementById("tblItems");
+    for (let row of tbl.rows) {
+        for (let cell of row.cells) {
+            console.log(cell.innerText);
+        }
+    }*/
+
+    let table = document.getElementById('tblCart');
+    let count = table.rows.length;
+    for(let i=0; i<count; i++) {
+        if (table.rows[i].cells[0].innerText === code) {
+            itemDetails.length = 0;
+            return true;
+        }
+    }
+    return false;
 }
+
+/*Select item from the Cart*/
+let selectedRowOfCart;
+$("#tblCart > tbody").on("click", "tr", function () {
+    $("#tblCart > tbody > tr").css({
+        "background-color" : "initial",
+        "color" : "initial"
+    });
+    selectedRowOfCart = $(this).closest("tr");
+    $(this).css({
+        "background-color" : "#E4DCC0",
+        "color" : "black"
+    });
+});
+
+/*Delete an item from the Cart*/
+$("#btnRemove").click(function () {
+    selectedRowOfCart.remove();
+});
+
+/*Clear Cart*/
+$("#btnClear").click(function () {
+    $("#tblCart > tbody").empty();
+});
