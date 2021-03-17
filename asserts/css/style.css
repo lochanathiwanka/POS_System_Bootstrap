@@ -642,37 +642,54 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.manage-items > .row > .item-details > div:nth-child(1) {
+.manage-items > .row > .item-details > section {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+}
+
+.manage-items > .row > .item-details > section > input {
+    border-radius: 5px;
+}
+
+.manage-items > .row > .item-details > section > input:focus {
+    outline: none !important;
+    border:1px solid red;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.manage-items > .row > .item-details > .details {
     position: absolute;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     left: 50%;
-    top: 20%;
+    top: 30%;
     transform: translate(-50%, -50%);
 }
 
-.manage-items > .row > .item-details > div:nth-child(1) > input {
+.manage-items > .row > .item-details > .details > input {
     border-radius: 20px;
     border: none;
     background: #EAEAEA;
 }
 
-.manage-items > .row > .item-details > div:nth-child(1) > input:focus {
+.manage-items > .row > .item-details > .details > input:focus {
     outline: none !important;
 }
 
-.manage-items > .row > .item-details > div:nth-child(2) {
+.manage-items > .row > .item-details > .buttons {
     position: absolute;
     display: flex;
     gap: 5px;
     left: 50%;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.manage-items > .row > .item-details > div:nth-child(2) > button {
+.manage-items > .row > .item-details > .buttons > button {
     width: 100px;
     height: 30px;
     border-radius: 30px;
@@ -686,14 +703,14 @@ body {
     transition: all 0.6s ease;
 }
 
-.manage-items > .row > .item-details > div:nth-child(2) > button:hover {
+.manage-items > .row > .item-details > .buttons > button:hover {
     transition: all 0.4s ease;
     background: #FEDA15;
     color: black;
     transform: scale(1.2);
 }
 
-.manage-items > .row > .item-details > div:nth-child(2) > button:focus {
+.manage-items > .row > .item-details > .buttons > button:focus {
     outline: none !important;
 }
 
@@ -815,37 +832,54 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(1) {
+.manage-customers > .row > .customer-details > section {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+}
+
+.manage-customers > .row > .customer-details > section > input {
+    border-radius: 5px;
+}
+
+.manage-customers > .row > .customer-details > section > input:focus {
+    outline: none !important;
+    border:1px solid red;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.manage-customers > .row > .customer-details > .details {
     position: absolute;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     left: 50%;
-    top: 20%;
+    top: 30%;
     transform: translate(-50%, -50%);
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(1) > input {
+.manage-customers > .row > .customer-details > .details > input {
     border-radius: 20px;
     border: none;
     background: #EAEAEA;
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(1) > input:focus {
+.manage-customers > .row > .customer-details > .details > input:focus {
     outline: none !important;
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(2) {
+.manage-customers > .row > .customer-details > .buttons {
     position: absolute;
     display: flex;
     gap: 5px;
     left: 50%;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(2) > button {
+.manage-customers > .row > .customer-details > .buttons > button {
     width: 100px;
     height: 30px;
     border-radius: 30px;
@@ -859,14 +893,14 @@ body {
     transition: all 0.6s ease;
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(2) > button:hover {
+.manage-customers > .row > .customer-details > .buttons > button:hover {
     transition: all 0.4s ease;
     background: #FEDA15;
     color: black;
     transform: scale(1.2);
 }
 
-.manage-customers > .row > .customer-details > div:nth-child(2) > button:focus {
+.manage-customers > .row > .customer-details > .buttons > button:focus {
     outline: none !important;
 }
 

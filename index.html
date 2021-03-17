@@ -6,7 +6,7 @@
           name="viewport">
     <title>Food Festive</title>
     <link href="asserts/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="asserts/css/style.css" rel="stylesheet">
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap"
@@ -100,30 +100,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>P001</td>
-                        <td>Star Gold White Sugar (1kg)</td>
-                        <td>50</td>
-                        <td>110</td>
-                    </tr>
-                    <tr>
-                        <td>P002</td>
-                        <td>Keeri Samba (5kg)</td>
-                        <td>40</td>
-                        <td>700</td>
-                    </tr>
-                    <tr>
-                        <td>P003</td>
-                        <td>Maliban Biscuit Kritz (170g)</td>
-                        <td>30</td>
-                        <td>160</td>
-                    </tr>
-                    <tr>
-                        <td>P004</td>
-                        <td>Happy Cow Cheese Wedges (200g)</td>
-                        <td>20</td>
-                        <td>627</td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -373,13 +349,17 @@
             </div>
         </section>
         <section class="item-details col-md-6 col-sm-6 col-sm">
-            <div>
+            <section>
+                <label for="txtSearchItem">Search : </label>
+                <input type="text" id="txtSearchItem" placeholder="Item Code">
+            </section>
+            <div class="details">
                 <label class="lblDescription" for="txtDescription">Description</label>
                 <input id="txtDescription" type="text">
-                <label class="lblUnitPrice" for="txtUnitPrice">U.Price</label>
-                <input id="txtUnitPrice" type="text">
                 <label class="lblQTY" for="txtItemQTY">QTY</label>
                 <input id="txtItemQTY" type="text">
+                <label class="lblUnitPrice" for="txtUnitPrice">U.Price</label>
+                <input id="txtUnitPrice" type="text">
             </div>
             <div class="buttons">
                 <button id="btnAddItem">Add</button>
@@ -443,7 +423,11 @@
             </div>
         </section>
         <section class="customer-details col-md-6 col-sm-6 col-sm">
-            <div>
+            <section>
+                <label for="txtSearchCustomer">Search : </label>
+                <input type="text" id="txtSearchCustomer" placeholder="CID">
+            </section>
+            <div class="details">
                 <label class="lblName" for="txtCustomerName">Name</label>
                 <input id="txtCustomerName" type="text">
                 <label class="lblAddress" for="txtCustomerAddress">Address</label>
@@ -459,8 +443,16 @@
         </section>
     </div>
 </div>
+
 <script src="asserts/bootstrap/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="script/script.js"></script>
+<script src="db/DB.js"></script>
+<script src="controller/CustomerController.js"></script>
+<script src="controller/ItemController.js"></script>
+<script src="controller/OrderController.js"></script>
+<script src="model/Customer.js"></script>
+<script src="model/Items.js"></script>
+<script src="model/Order.js"></script>
+<script src="asserts/script/script.js"></script>
 </body>
 </html>
