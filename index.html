@@ -24,7 +24,7 @@
                 <i class="fas fa-hamburger"></i>
                 <a href="#">Manage Items</a>
             </button>
-            <button id="btn-manage-orders">
+            <button id="btn-manage-orders" onclick="showManageOrderForm()">
                 <i class="fas fa-cart-arrow-down"></i>
                 <a href="#">Manage Orders</a>
             </button>
@@ -47,7 +47,7 @@
         </nav>
         <ul class="menu-list">
             <li id="list-manage-items" onclick="showManageItemForm()"><a href="#"><i class="fas fa-hamburger"></i></a></li>
-            <li id="list-manage-orders"><a href="#"><i class="fas fa-cart-arrow-down"></i></a></li>
+            <li id="list-manage-orders" onclick="showManageOrderForm()"><a href="#"><i class="fas fa-cart-arrow-down"></i></a></li>
             <li id="list-manage-customers" onclick="showManageCustomerForm()"><a href="#"><i class="fas fa-user"></i></a></li>
             <li id="list-new-order" onclick="showPlaceOrderForm()"><a href="#"><i class="fas fa-plus"></i></a></li>
             <li id="list-settings"><a href="#"><i class="fas fa-cog"></i></a></li>
@@ -395,30 +395,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                  <!--  <tr>
-                        <td>C001</td>
-                        <td>Lochana Thiwanka</td>
-                        <td>Panadura</td>
-                        <td>0715936850</td>
-                    </tr>
-                    <tr>
-                        <td>C002</td>
-                        <td>Dinura Ranthila</td>
-                        <td>Dibbedda</td>
-                        <td>0784991063</td>
-                    </tr>
-                    <tr>
-                        <td>C003</td>
-                        <td>Hasith Ranaweera</td>
-                        <td>Panadura</td>
-                        <td>07845369521</td>
-                    </tr>
-                    <tr>
-                        <td>C004</td>
-                        <td>Supin Bhanuka</td>
-                        <td>Wadduwa</td>
-                        <td>07754235169</td>
-                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -447,6 +423,46 @@
         </section>
     </div>
 </div>
+<div class="manage-orders container-fluid" id="manageOrderForm">
+    <div class="row">
+        <section class="col-md-12 col-sm-12">
+            <div class="order-id">
+                <form action="#">
+                    <label for="cmbOrderId">Select Order ID:</label>
+                    <select id="cmbOrderId" name="id">
+                        <option value="select">Select</option>
+                    </select>
+                </form>
+            </div>
+            <div class="customer-id">
+                <form action="#">
+                    <label for="cmbOrderId-placeOrder">Select Customer ID:</label>
+                    <select id="cmbOrderId-placeOrder" name="id">
+                        <option value="select">Select</option>
+                    </select>
+                </form>
+            </div>
+        </section>
+        <section class="order-table col-md-12 col-sm-12">
+            <h3 class="title">Orders</h3>
+            <div class="tbl">
+                <table class="table table-hover" id="tblOrders">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">QTY</th>
+                        <th scope="col">U.Price</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
 
 <script src="asserts/bootstrap/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -457,6 +473,7 @@
 <script src="model/Customer.js"></script>
 <script src="model/Items.js"></script>
 <script src="model/Order.js"></script>
+<script src="model/OrderDetails.js"></script>
 <script src="asserts/script/script.js"></script>
 </body>
 </html>

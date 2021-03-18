@@ -932,6 +932,69 @@ body {
 }
 
 
+/*Manage Order form styling*/
+.manage-orders {
+    position: relative;
+    width: calc(100vw - 18rem) !important;
+    left: 144px;
+    display: none;
+}
+
+.manage-orders > .row > :nth-child(1) {
+    position: relative;
+    height: 200px;
+}
+
+.manage-orders > .row > :nth-child(1) > .order-id {
+    position: absolute;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.manage-orders > .row > :nth-child(1) > .customer-id {
+    position: absolute;
+    left: 400px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.manage-orders > .row > :nth-child(2) {
+    position: relative;
+    height: 300px;
+}
+
+.manage-orders > .row > :nth-child(2) > .title {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.manage-orders > .row > :nth-child(2) > .tbl {
+    position: relative;
+    transform: translateY(50px);
+    height: 280px;
+    overflow: auto;
+}
+
+.manage-orders > .row > :nth-child(2) > .tbl > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.manage-orders > .row > :nth-child(2) > .tbl > table tr th {
+    background-color: #716b6b;
+    color: white;
+    position: sticky;
+    z-index: 100;
+    top: 0;
+}
+
+
 
 /*Media Query*/
 @media all and (max-width: 1084px) {

@@ -12,6 +12,7 @@ function showManageItemForm() {
     $("#manageItemForm").css("display", "block");
     $("#placeOrderForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
+    $("#manageOrderForm").css("display", "none");
 }
 
 function showPlaceOrderForm() {
@@ -30,6 +31,7 @@ function showPlaceOrderForm() {
     $("#placeOrderForm").css("display", "block");
     $("#manageItemForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
+    $("#manageOrderForm").css("display", "none");
 }
 
 function showManageCustomerForm() {
@@ -40,6 +42,14 @@ function showManageCustomerForm() {
     setCustomerDetailsValue("", "", "");
     $("#txtSearchCustomer").val("");
     $("#manageCustomerForm").css("display", "block");
+    $("#manageItemForm").css("display", "none");
+    $("#placeOrderForm").css("display", "none");
+    $("#manageOrderForm").css("display", "none");
+}
+
+function showManageOrderForm() {
+    $("#manageOrderForm").css("display", "block");
+    $("#manageCustomerForm").css("display", "none");
     $("#manageItemForm").css("display", "none");
     $("#placeOrderForm").css("display", "none");
 }
