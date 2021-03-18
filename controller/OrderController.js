@@ -1,3 +1,28 @@
+/*Load Customers to Combo Box*/
+function addValuesToCmbCustomers(value) {
+    $("#cmbCustomers").append(value);
+}
+
+/*Select a Customer from Combo Box*/
+$("#cmbCustomers").change(function () {
+    let cid = $(this).children("option:selected").text();
+    if (cid.toLowerCase() === "select") {
+        setCustomerDetailsOnPlaceOrder("", "", "");
+    }
+    for (let i = 0; i < customerTable.length; i++) {
+        if (customerTable[i].getCid() === cid) {
+            setCustomerDetailsOnPlaceOrder(customerTable[i].getName(), customerTable[i].getAddress(), customerTable[i].getContact());
+        }
+    }
+});
+
+function setCustomerDetailsOnPlaceOrder(name, address, contact) {
+    $("#txtName").val(name);
+    $("#txtAddress").val(address);
+    $("#txtContact").val(contact);
+}
+
+
 /*Get all Items*/
 function getAllItemsOnPlaceOrderForm() {
     $("#tblItems > tbody").empty();

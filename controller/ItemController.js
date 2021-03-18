@@ -124,7 +124,6 @@ $("#txtSearchItem").on("keyup", function () {
         "color" : "initial"
     });
     let code = $("#txtSearchItem").val();
-    console.log(itemTable.length);
     for (let i = 0; i < itemTable.length; i++) {
         if (itemTable[i].getCode().toLowerCase() === code.toLowerCase() ) {
             setItemDetailsValue(itemTable[i].getDescription(), itemTable[i].getQty(), itemTable[i].getUnitPrice());
@@ -132,6 +131,6 @@ $("#txtSearchItem").on("keyup", function () {
         }
     }
     setItemDetailsValue("", "", "");
-})
+});
 
 

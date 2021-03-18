@@ -5,6 +5,7 @@ function showManageItemForm() {
         "color" : "initial"
     });
     setItemDetailsValue("", "", "");
+    $("#txtSearchItem").val("");
     $("#manageItemForm").css("display", "block");
     $("#placeOrderForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
@@ -21,6 +22,8 @@ function showPlaceOrderForm() {
     });
     getAllItemsOnPlaceOrderForm();
     $("#txtQTY").val("");
+    setCustomerDetailsOnPlaceOrder("", "", "");
+    $("#cmbCustomers").get(0).selectedIndex = 0;
     $("#placeOrderForm").css("display", "block");
     $("#manageItemForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
@@ -32,6 +35,7 @@ function showManageCustomerForm() {
         "color" : "initial"
     });
     setCustomerDetailsValue("", "", "");
+    $("#txtSearchCustomer").val("");
     $("#manageCustomerForm").css("display", "block");
     $("#manageItemForm").css("display", "none");
     $("#placeOrderForm").css("display", "none");

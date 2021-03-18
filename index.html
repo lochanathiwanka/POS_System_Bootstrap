@@ -69,13 +69,9 @@
         </section>
         <section class="select-customer col-md-6 col-sm-6 col-sm">
             <form action="#">
-                <label for="customers">Select a Customer:</label>
-                <select id="customers" name="customers">
+                <label for="cmbCustomers">Select a Customer:</label>
+                <select id="cmbCustomers" name="customers">
                     <option value="select">Select</option>
-                    <option value="cust-1">C001</option>
-                    <option value="cust-2">C002</option>
-                    <option value="cust-3">C003</option>
-                    <option value="cust-4">C004</option>
                 </select>
             </form>
             <div>
@@ -429,11 +425,11 @@
             </section>
             <div class="details">
                 <label class="lblName" for="txtCustomerName">Name</label>
-                <input id="txtCustomerName" type="text">
+                <input name="name" id="txtCustomerName" type="text">
                 <label class="lblAddress" for="txtCustomerAddress">Address</label>
-                <input id="txtCustomerAddress" type="text">
+                <input name="address" id="txtCustomerAddress" type="text">
                 <label class="lblContact" for="txtCustomerContact">Contact</label>
-                <input id="txtCustomerContact" type="text">
+                <input name="contact" id="txtCustomerContact" type="text">
             </div>
             <div class="buttons">
                 <button id="btnAddCustomer">Add</button>
