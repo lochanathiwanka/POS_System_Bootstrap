@@ -19,23 +19,27 @@ generateCustomerId();
 
 /*Add customer to Customer table*/
 $("#btnAddCustomer").click(function () {
+   addCustomer();
+});
+function addCustomer() {
     let cid = $("#customer-id").text().substring(1);
-    let name = $("#txtCustomerName").val();
+    let name = $("#txtCustomerName");
     let address = $("#txtCustomerAddress").val();
     let contact = $("#txtCustomerContact").val();
 
 
     if (name.length !==0 && address.length !==0 && contact.length !==0) {
-        customerTable.push(new Customer(cid, name, address, contact));
+        customerTable.push(new Customer(cid, name.val(), address, contact));
         getAllCustomers();
         setCustomerDetailsValue("", "", "");
         generateCustomerId();
-
+        name.focus();
         addValuesToCmbCustomers("<option>"+cid+"</option>");
     } else {
         alert("Fields cannot be empty!");
     }
-});
+}
+
 function setCustomerDetailsValue(name, address, contact) {
     $("#txtCustomerName").val(name);
     $("#txtCustomerAddress").val(address);
@@ -147,51 +151,51 @@ function checkCustomerRegex(pattern, value) {
     return pattern.test(value);
 }
 
-/*Item description field validate*/
+/*Customer name field validate*/
 $("#txtCustomerName").on("keyup", function (event) {
-    let description_alert = $("#description-alert");
-    if (checkRegex(/^[A-z 0-9 ()]{1,}$/, $("#txtDescription").val())) {
-        description_alert.text("");
+    let name_alert = $("#name-alert");
+    if (checkCustomerRegex(/^[A-z ]{1,}$/, $("#txtCustomerName").val())) {
+        name_alert.text("");
         if (event.key === "Enter") {
-            $("#txtItemQTY").focus();
+            $("#txtCustomerAddress").focus();
         }
     } else {
-        description_alert.text("Cannot add symbols (!,@,#,$,%,^,*,\\,/.)");
-        description_alert.css({
+        name_alert.text("Only add letters (A,B,C,a,b,c,..)");
+        name_alert.css({
             "color" : "red",
             "font-size" : "13px"
         });
     }
 });
 
-/*Item qty field validate*/
-$("#txtItemQTY").on("keyup", function (event) {
-    let qty_alert = $("#qty-alert");
-    if (checkRegex(/^[0-9]{1,}$/, $("#txtItemQTY").val())) {
-        qty_alert.text("");
+/*Customer address field validate*/
+$("#txtCustomerAddress").on("keyup", function (event) {
+    let address_alert = $("#address-alert");
+    if (checkCustomerRegex(/^[A-z .,/0-9]{1,}$/, $("#txtCustomerAddress").val())) {
+        address_alert.text("");
         if (event.key === "Enter") {
-            $("#txtUnitPrice").focus();
+            $("#txtCustomerContact").focus();
         }
     } else {
-        qty_alert.text("Only add numbers (1234..)");
-        qty_alert.css({
+        address_alert.text("Check again!");
+        address_alert.css({
             "color" : "red",
             "font-size" : "13px"
         });
     }
 });
 
-/*Item unitPrice field validate*/
-$("#txtUnitPrice").on("keyup", function (event) {
-    let unitePrice_alert = $("#unitPrice-alert");
-    if (checkRegex(/^[0-9.]{1,}$/, $("#txtUnitPrice").val())) {
-        unitePrice_alert.text("");
+/*Customer contact field validate*/
+$("#txtCustomerContact").on("keyup", function (event) {
+    let contact_alert = $("#contact-alert");
+    if (checkCustomerRegex(/^[0-9 -]{1,}$/, $("#txtCustomerContact").val())) {
+        contact_alert.text("");
         if (event.key === "Enter") {
-            addItem();
+            addCustomer();
         }
     } else {
-        unitePrice_alert.text("Only add numbers (1234..)");
-        unitePrice_alert.css({
+        contact_alert.text("Only add numbers (1234..)");
+        contact_alert.css({
             "color" : "red",
             "font-size" : "13px"
         });

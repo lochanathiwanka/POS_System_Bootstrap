@@ -65,12 +65,8 @@ $("#btnAdd").click(function () {
     if (!check) {
         if (itemDetails[0] !== undefined) {
             if (itemDetails[2] >= newQty.val()) {
-                let oldTot = parseFloat($("#txtTotal").val());
-                if (isNaN(oldTot)) {
-                    oldTot = 0;
-                }
                 let newTot = parseInt(newQty.val()) * parseFloat(itemDetails[3]);
-                let tot = oldTot + newTot;
+                let tot = 0;
 
                 $("#tblCart > tbody").append("<tr>" +
                     "<td>" + itemDetails[0] + "</td>" +
@@ -79,7 +75,23 @@ $("#btnAdd").click(function () {
                     "<td>" + newTot + "</td>" +
                     "</tr>");
 
-                setTotValue(tot);
+                let table = document.getElementById('tblCart');
+                let count = table.rows.length;
+                for(let i=1; i<count; i++) {
+                    tot += parseFloat(table.rows[i].cells[3].innerText);
+                }
+
+                let discount = $("#txtDiscount");
+                if (tot > 2000 && tot < 5000) {
+                    discount.val((tot/100)*10);
+                    setTotValue(tot - (tot/100)*10);
+                } else if (tot > 5000) {
+                    discount.val((tot/100)*20);
+                    setTotValue(tot - (tot/100)*20);
+                } else {
+                    discount.val("");
+                    setTotValue(tot);
+                }
 
                 itemDetails.length = 0;
 
@@ -152,12 +164,24 @@ $("#tblCart > tbody").on("click", "tr", function () {
 /*Delete an item from the Cart*/
 $("#btnRemove").click(function () {
     let unitPrice = parseFloat(selectedRowOfCart.find("td:eq(3)").text());
-    let tot = parseFloat($("#txtTotal").val()) - unitPrice;
-    setTotValue(tot);
+    let totAmountWithoutDiscount = parseFloat($("#txtDiscount").val()) + parseFloat(($("#txtTotal").val()));
+    // let discount = parseFloat($("#txtDiscount").val());
+    let tot = totAmountWithoutDiscount - unitPrice;
+
+    if (tot > 2000 && tot < 5000) {
+        $("#txtDiscount").val((tot/100)*10);
+        setTotValue(tot - (tot/100)*10);
+    } else if (tot > 5000) {
+        $("#txtDiscount").val((tot/100)*20);
+        setTotValue(tot - (tot/100)*20);
+    } else {
+        $("#txtDiscount").val("");
+        setTotValue(tot);
+    }
 
     let rowCount = $("#tblCart > tbody > tr").length;
-    console.log(rowCount);
     if (rowCount === 1) {
+        $("#txtDiscount").val("");
         setTotValue("");
     }
     selectedRowOfCart.remove();
@@ -166,6 +190,7 @@ $("#btnRemove").click(function () {
 /*Clear Cart*/
 $("#btnClear").click(function () {
     $("#tblCart > tbody").empty();
+    $("#txtDiscount").val("");
     $("#txtTotal").val("");
 });
 
@@ -173,3 +198,19 @@ $("#btnClear").click(function () {
 let setTotValue = (value) => {
     $("#txtTotal").val(value);
 }
+
+/*txtDiscount onAction*/
+$("#txtDiscount").on("keyup", function (event) {
+    let tot = 0;
+    let table = document.getElementById('tblCart');
+    let count = table.rows.length;
+    for(let i=1; i<count; i++) {
+        tot += parseFloat(table.rows[i].cells[3].innerText);
+    }
+    $("#txtTotal").val(tot);
+
+    if (event.key === "Enter") {
+        tot = parseFloat($("#txtTotal").val()) - parseFloat($("#txtDiscount").val());
+        $("#txtTotal").val(tot);
+    }
+});
