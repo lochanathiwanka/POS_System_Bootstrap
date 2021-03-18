@@ -19,20 +19,25 @@ generateItemCode();
 
 /*Add items to Item table*/
 $("#btnAddItem").click(function () {
+    addItem();
+});
+
+function addItem() {
     let code = $("#item-code").text().substring(1);
-    let description = $("#txtDescription").val();
+    let description = $("#txtDescription");
     let unitPrice = $("#txtUnitPrice").val();
     let qty = $("#txtItemQTY").val();
 
     if (description.length !==0 && qty.length !==0 && unitPrice.length !==0) {
-        itemTable.push(new Item(code, description, qty, unitPrice));
+        itemTable.push(new Item(code, description.val(), qty, unitPrice));
         getAllItems();
         setItemDetailsValue("", "", "");
         generateItemCode();
+        description.focus();
     } else {
         alert("Fields cannot be empty!");
     }
-});
+}
 
 function setItemDetailsValue(description, qty, unitPrice) {
     $("#txtDescription").val(description);
@@ -131,6 +136,62 @@ $("#txtSearchItem").on("keyup", function () {
         }
     }
     setItemDetailsValue("", "", "");
+});
+
+/*Regex*/
+function checkItemRegex(pattern, value) {
+    return pattern.test(value);
+}
+
+/*Item description field validate*/
+$("#txtDescription").on("keyup", function (event) {
+    let description_alert = $("#description-alert");
+    if (checkItemRegex(/^[A-z 0-9 ()]{1,}$/, $("#txtDescription").val())) {
+        description_alert.text("");
+        if (event.key === "Enter") {
+            $("#txtItemQTY").focus();
+        }
+    } else {
+        description_alert.text("Cannot add symbols (!,@,#,$,%,^,*,\\,/.)");
+        description_alert.css({
+            "color" : "red",
+            "font-size" : "13px"
+        });
+    }
+});
+
+/*Item qty field validate*/
+$("#txtItemQTY").on("keyup", function (event) {
+    let qty_alert = $("#qty-alert");
+    if (checkItemRegex(/^[0-9]{1,}$/, $("#txtItemQTY").val())) {
+        qty_alert.text("");
+        if (event.key === "Enter") {
+            $("#txtUnitPrice").focus();
+        }
+    } else {
+        qty_alert.text("Only add numbers (1234..)");
+        qty_alert.css({
+            "color" : "red",
+            "font-size" : "13px"
+        });
+    }
+});
+
+/*Item unitPrice field validate*/
+$("#txtUnitPrice").on("keyup", function (event) {
+    let unitePrice_alert = $("#unitPrice-alert");
+    if (checkItemRegex(/^[0-9.]{1,}$/, $("#txtUnitPrice").val())) {
+        unitePrice_alert.text("");
+        if (event.key === "Enter") {
+            addItem();
+        }
+    } else {
+        unitePrice_alert.text("Only add numbers (1234..)");
+        unitePrice_alert.css({
+            "color" : "red",
+            "font-size" : "13px"
+        });
+    }
 });
 
 

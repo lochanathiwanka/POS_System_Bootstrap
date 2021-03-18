@@ -55,7 +55,7 @@ $("#tblItems > tbody").on("click", "tr", function () {
     let unitPrice = selectedRow.find("td:eq(3)").text();
 
     $("#txtQTY").val(qty);
-    itemDetails.push(code,description,unitPrice);
+    itemDetails.push(code,description,qty,unitPrice);
 });
 
 /*Add item to Cart*/
@@ -64,29 +64,33 @@ $("#btnAdd").click(function () {
     let check = isExist(itemDetails[0]);
     if (!check) {
         if (itemDetails[0] !== undefined) {
-            let oldTot = parseFloat($("#txtTotal").val());
-            if (isNaN(oldTot)) {
-                oldTot = 0;
+            if (itemDetails[2] >= newQty.val()) {
+                let oldTot = parseFloat($("#txtTotal").val());
+                if (isNaN(oldTot)) {
+                    oldTot = 0;
+                }
+                let newTot = parseInt(newQty.val()) * parseFloat(itemDetails[3]);
+                let tot = oldTot + newTot;
+
+                $("#tblCart > tbody").append("<tr>" +
+                    "<td>" + itemDetails[0] + "</td>" +
+                    "<td>" + itemDetails[1] + "</td>" +
+                    "<td>" + newQty.val() + "</td>" +
+                    "<td>" + newTot + "</td>" +
+                    "</tr>");
+
+                setTotValue(tot);
+
+                itemDetails.length = 0;
+
+                $("#tblItems > tbody > tr").css({
+                    "background-color": "initial",
+                    "color": "initial"
+                });
+                newQty.val("");
+            } else {
+                alert("Insufficient amount of QTY!");
             }
-            let newTot = parseInt(newQty.val()) * parseFloat(itemDetails[2]);
-            let tot = oldTot + newTot;
-
-            $("#tblCart > tbody").append("<tr>" +
-                "<td>"+itemDetails[0]+"</td>" +
-                "<td>"+itemDetails[1]+"</td>" +
-                "<td>"+newQty.val()+"</td>" +
-                "<td>"+newTot+"</td>" +
-                "</tr>");
-
-            setTotValue(tot);
-
-            itemDetails.length = 0;
-
-            $("#tblItems > tbody > tr").css({
-                "background-color" : "initial",
-                "color" : "initial"
-            });
-            newQty.val("");
         }
     } else {
         alert("Item is already in Cart!");

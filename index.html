@@ -76,11 +76,11 @@
             </form>
             <div>
                 <label class="lblName" for="txtName">Name</label>
-                <input id="txtName" type="text">
+                <input id="txtName" type="text" readonly>
                 <label class="lblAddress" for="txtAddress">Address</label>
-                <input id="txtAddress" type="text">
+                <input id="txtAddress" type="text" readonly>
                 <label class="lblContact" for="txtContact">Contact</label>
-                <input id="txtContact" type="text">
+                <input id="txtContact" type="text" readonly>
             </div>
         </section>
         <section class="item-table col-md-6 col-sm-6">
@@ -352,10 +352,13 @@
             <div class="details">
                 <label class="lblDescription" for="txtDescription">Description</label>
                 <input id="txtDescription" type="text">
+                <span id="description-alert"></span>
                 <label class="lblQTY" for="txtItemQTY">QTY</label>
                 <input id="txtItemQTY" type="text">
+                <span id="qty-alert"></span>
                 <label class="lblUnitPrice" for="txtUnitPrice">U.Price</label>
                 <input id="txtUnitPrice" type="text">
+                <span id="unitPrice-alert"></span>
             </div>
             <div class="buttons">
                 <button id="btnAddItem">Add</button>
@@ -426,10 +429,13 @@
             <div class="details">
                 <label class="lblName" for="txtCustomerName">Name</label>
                 <input name="name" id="txtCustomerName" type="text">
+                <span id="name-alert"></span>
                 <label class="lblAddress" for="txtCustomerAddress">Address</label>
                 <input name="address" id="txtCustomerAddress" type="text">
+                <span id="address-alert"></span>
                 <label class="lblContact" for="txtCustomerContact">Contact</label>
                 <input name="contact" id="txtCustomerContact" type="text">
+                <span id="contact-alert"></span>
             </div>
             <div class="buttons">
                 <button id="btnAddCustomer">Add</button>

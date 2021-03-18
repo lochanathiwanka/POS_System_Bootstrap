@@ -6,6 +6,9 @@ function showManageItemForm() {
     });
     setItemDetailsValue("", "", "");
     $("#txtSearchItem").val("");
+    $("#description-alert").text("");
+    $("#qty-alert").text("");
+    $("#unitPrice-alert").text("");
     $("#manageItemForm").css("display", "block");
     $("#placeOrderForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
@@ -40,4 +43,12 @@ function showManageCustomerForm() {
     $("#manageItemForm").css("display", "none");
     $("#placeOrderForm").css("display", "none");
 }
+
+$(document).keydown(function (e) {
+    let keycode1 = (e.keyCode ? e.keyCode : e.which);
+    if (keycode1 === 0 || keycode1 === 9) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
 /*--------------------------------------------------*/
