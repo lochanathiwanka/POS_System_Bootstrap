@@ -35,6 +35,7 @@ function addCustomer() {
         generateCustomerId();
         name.focus();
         addValuesToCmbCustomers("<option>"+cid+"</option>");
+        addValuesToCmbCustomer_ManageOrdersForm("<option>"+cid+"</option>");
     } else {
         alert("Fields cannot be empty!");
     }
@@ -120,9 +121,11 @@ $("#btnRemoveCustomer").click(function () {
         $("#txtSearchCustomer").val("");
 
         let cmbCustomer = document.getElementById("cmbCustomers");
+        let cmbCustomer_ManageOrderForm = document.getElementById("cmbCustomerId-ManageOrders");
         for (let i = 0; i < cmbCustomer.length; i++) {
             if (cmbCustomer.options[i].innerText === cid) {
                 cmbCustomer.remove(i);
+                cmbCustomer_ManageOrderForm.remove(i);
             }
         }
     } else {

@@ -114,22 +114,10 @@
                         <th scope="col">Code</th>
                         <th scope="col">Description</th>
                         <th scope="col">QTY</th>
-                        <th scope="col">Unite-Price</th>
+                        <th scope="col">Tot-Amount</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <!--<tr>
-                        <td>P001</td>
-                        <td>Star Gold White Sugar (1kg)</td>
-                        <td>2</td>
-                        <td>220</td>
-                    </tr>
-                    <tr>
-                        <td>P003</td>
-                        <td>Maliban Biscuit Kritz (170g)</td>
-                        <td>3</td>
-                        <td>480</td>
-                    </tr>-->
+                    <tbody id="tblCart-body">
                     </tbody>
                 </table>
             </div>
@@ -425,6 +413,10 @@
 </div>
 <div class="manage-orders container-fluid" id="manageOrderForm">
     <div class="row">
+        <section class="title col-md-12 col-sm-12">
+            <h1>Manage Orders</h1>
+            <img alt="icon" src="asserts/icons/icon%20-%20box.gif">
+        </section>
         <section class="col-md-12 col-sm-12">
             <div class="order-id">
                 <form action="#">
@@ -436,8 +428,8 @@
             </div>
             <div class="customer-id">
                 <form action="#">
-                    <label for="cmbOrderId-placeOrder">Select Customer ID:</label>
-                    <select id="cmbOrderId-placeOrder" name="id">
+                    <label for="cmbCustomerId-ManageOrders">Select Customer ID:</label>
+                    <select id="cmbCustomerId-ManageOrders" name="id">
                         <option value="select">Select</option>
                     </select>
                 </form>
@@ -461,6 +453,12 @@
                 </table>
             </div>
         </section>
+        <section class="total col-md-12 col-sm-12">
+            <label for="txtDiscount2">Discount</label>
+            <input id="txtDiscount2" type="text" readonly>
+            <label for="txtTotal2">Total</label>
+            <input id="txtTotal2" type="text" readonly>
+        </section>
     </div>
 </div>
 
@@ -469,6 +467,7 @@
 <script src="db/DB.js"></script>
 <script src="controller/CustomerController.js"></script>
 <script src="controller/ItemController.js"></script>
+<script src="controller/PlaceOrderController.js"></script>
 <script src="controller/OrderController.js"></script>
 <script src="model/Customer.js"></script>
 <script src="model/Items.js"></script>
