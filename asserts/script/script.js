@@ -52,6 +52,17 @@ function showManageCustomerForm() {
 }
 
 function showManageOrderForm() {
+    let cmbOrderId = $("#cmbOrderId");
+    cmbOrderId.empty();
+    cmbOrderId.append("<option>Select</option>");
+    for (let i = 0; i < orderTable.length; i++) {
+        $("#cmbOrderId").append("<option>"+orderTable[i].getOid()+"</option>");
+    }
+    cmbOrderId.get(0).selectedIndex = 0;
+    $("#cmbCustomerId-ManageOrders").get(0).selectedIndex = 0;
+    $("#tblOrders > tbody").empty();
+    $("#txtDiscount2").val("");
+    $("#txtTotal2").val("");
     $("#manageOrderForm").css("display", "block");
     $("#manageCustomerForm").css("display", "none");
     $("#manageItemForm").css("display", "none");

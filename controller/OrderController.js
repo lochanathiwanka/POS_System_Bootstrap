@@ -51,3 +51,24 @@ $("#cmbOrderId").change(function () {
         }
     }
 });
+
+/*Select customer id from combo box*/
+$("#cmbCustomerId-ManageOrders").change(function () {
+    let cid = $(this).children("option:selected").text();
+    $("#tblOrders > tbody").empty();
+    let cmbOrderId = $("#cmbOrderId");
+    cmbOrderId.empty();
+    cmbOrderId.append("<option>Select</option>");
+
+    if (cid === "Select") {
+        for (let i = 0; i < orderTable.length; i++) {
+            $("#cmbOrderId").append("<option>"+orderTable[i].getOid()+"</option>");
+        }
+    } else {
+        for (let i = 0; i < orderTable.length; i++) {
+            if (orderTable[i].getCustID() === cid) {
+                addValuesToCmbOrderID_ManageOrdersForm("<option>" + orderTable[i].getOid() + "</option>");
+            }
+        }
+    }
+});

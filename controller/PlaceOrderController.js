@@ -261,7 +261,6 @@ $("#btnPlaceOrder").click(function () {
         orderDetailTable.push(new OrderDetail(oid, code, qty, totAmount));
 
         for (let j = 0; j < itemTable.length; j++) {
-            console.log(itemTable[j].getCode());
             if (itemTable[j].getCode() === code) {
                 let oldQty = parseInt(itemTable[j].getQty());
                 let newQty = oldQty - parseInt(qty);
