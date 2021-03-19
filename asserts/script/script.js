@@ -9,6 +9,7 @@ function showManageItemForm() {
     $("#description-alert").text("");
     $("#qty-alert").text("");
     $("#unitPrice-alert").text("");
+    getAllItems();
     $("#manageItemForm").css("display", "block");
     $("#placeOrderForm").css("display", "none");
     $("#manageCustomerForm").css("display", "none");
@@ -26,6 +27,9 @@ function showPlaceOrderForm() {
     });
     getAllItemsOnPlaceOrderForm();
     $("#txtQTY").val("");
+    $("#tblCart > tbody").empty();
+    $("#txtDiscount").val("");
+    $("#txtTotal").val("");
     setCustomerDetailsOnPlaceOrder("", "", "");
     $("#cmbCustomers").get(0).selectedIndex = 0;
     $("#placeOrderForm").css("display", "block");

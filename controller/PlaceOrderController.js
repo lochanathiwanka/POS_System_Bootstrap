@@ -61,6 +61,7 @@ function getAllItemsOnPlaceOrderForm() {
 /*Select item qty from Item table*/
 let itemDetails = [];
 $("#tblItems > tbody").on("click", "tr", function () {
+    itemDetails.length = 0;
     $("#tblItems > tbody > tr").css({
         "background-color" : "initial",
         "color" : "initial"
@@ -86,7 +87,6 @@ $("#btnAdd").click(function () {
     let check = isExist(itemDetails[0]);
     if (!check) {
         if (itemDetails[0] !== undefined) {
-            console.log(itemDetails[2] >= parseInt(newQty.val()));
             if (itemDetails[2] >= newQty.val()) {
                 let newTot = parseInt(newQty.val()) * parseFloat(itemDetails[3]);
                 let tot = 0;
@@ -134,6 +134,7 @@ $("#btnAdd").click(function () {
             "color" : "initial"
         });
         newQty.val("");
+        itemDetails.length = 0;
     }
 });
 
@@ -252,7 +253,6 @@ $("#btnPlaceOrder").click(function () {
 
     let table = document.getElementById('tblCart-body');
     let count = table.rows.length;
-
     for(let i=0; i<count; i++) {
         let code = table.rows[i].cells[0].innerText;
         let qty = table.rows[i].cells[2].innerText;
@@ -260,21 +260,17 @@ $("#btnPlaceOrder").click(function () {
 
         orderDetailTable.push(new OrderDetail(oid, code, qty, totAmount));
 
-        let tblItem = document.getElementById('tblItems');
-        let rowCount = tblItem.rows.length;
-        for (let j = 1; j < rowCount; j++) {
-            if (itemTable[i].getCode() === code) {
-                let oldQty = parseInt(itemTable[i].getQty());
-                console.log("oldQty : "+oldQty);
-                console.log("cartQty : "+qty);
+        for (let j = 0; j < itemTable.length; j++) {
+            console.log(itemTable[j].getCode());
+            if (itemTable[j].getCode() === code) {
+                let oldQty = parseInt(itemTable[j].getQty());
                 let newQty = oldQty - parseInt(qty);
-                console.log("newQty : "+newQty);
-                itemTable[i].setQty(newQty);
-                break;
+                itemTable[j].setQty(newQty);
             }
         }
     }
 
+    alert("Order Placed successfully!");
     getAllItemsOnPlaceOrderForm();
     generateOrderID();
     setCustomerDetailsOnPlaceOrder("", "", "");
