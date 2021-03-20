@@ -59,6 +59,8 @@ $("#cmbCustomerId-ManageOrders").change(function () {
     let cmbOrderId = $("#cmbOrderId");
     cmbOrderId.empty();
     cmbOrderId.append("<option>Select</option>");
+    $("#txtDiscount2").val("");
+    $("#txtTotal2").val("");
 
     if (cid === "Select") {
         for (let i = 0; i < orderTable.length; i++) {

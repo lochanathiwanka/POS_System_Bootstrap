@@ -87,7 +87,7 @@ $("#btnAdd").click(function () {
     let check = isExist(itemDetails[0]);
     if (!check) {
         if (itemDetails[0] !== undefined) {
-            if (itemDetails[2] >= newQty.val()) {
+            if (itemDetails[2] >= newQty.val() && itemDetails[2] > 0) {
                 let newTot = parseInt(newQty.val()) * parseFloat(itemDetails[3]);
                 let tot = 0;
 
@@ -172,7 +172,7 @@ const isExist = function (code) {
 }
 
 /*Select item from the Cart*/
-let selectedRowOfCart;
+let selectedRowOfCart = null;
 $("#tblCart > tbody").on("click", "tr", function () {
     $("#tblCart > tbody > tr").css({
         "background-color" : "initial",
@@ -187,27 +187,36 @@ $("#tblCart > tbody").on("click", "tr", function () {
 
 /*Delete an item from the Cart*/
 $("#btnRemove").click(function () {
-    let totAmount = parseFloat(selectedRowOfCart.find("td:eq(3)").text());
-    let totAmountWithoutDiscount = parseFloat($("#txtDiscount").val()) + parseFloat(($("#txtTotal").val()));
-    let tot = totAmountWithoutDiscount - totAmount;
+    try {
+        if (selectedRowOfCart !== null) {
+            let totAmount = parseFloat(selectedRowOfCart.find("td:eq(3)").text());
+            let totAmountWithoutDiscount = parseFloat($("#txtDiscount").val()) + parseFloat(($("#txtTotal").val()));
+            let tot = totAmountWithoutDiscount - totAmount;
 
-    if (tot > 2000 && tot < 5000) {
-        $("#txtDiscount").val((tot/100)*10);
-        setTotValue(tot - (tot/100)*10);
-    } else if (tot > 5000) {
-        $("#txtDiscount").val((tot/100)*20);
-        setTotValue(tot - (tot/100)*20);
-    } else {
-        $("#txtDiscount").val("");
-        setTotValue(tot);
-    }
+            if (tot > 2000 && tot < 5000) {
+                $("#txtDiscount").val((tot / 100) * 10);
+                setTotValue(tot - (tot / 100) * 10);
+            } else if (tot > 5000) {
+                $("#txtDiscount").val((tot / 100) * 20);
+                setTotValue(tot - (tot / 100) * 20);
+            } else {
+                $("#txtDiscount").val("");
+                setTotValue(tot);
+            }
 
-    let rowCount = $("#tblCart > tbody > tr").length;
-    if (rowCount === 1) {
-        $("#txtDiscount").val("");
-        setTotValue("");
+            let rowCount = $("#tblCart > tbody > tr").length;
+            if (rowCount === 1) {
+                $("#txtDiscount").val("");
+                setTotValue("");
+            }
+            selectedRowOfCart.remove();
+            selectedRowOfCart = null;
+        } else {
+            alert("Select an Item to remove!");
+        }
+    } catch (e) {
+        alert("Cart is empty!");
     }
-    selectedRowOfCart.remove();
 });
 
 /*Clear Cart*/
@@ -240,41 +249,79 @@ $("#txtDiscount").on("keyup", function (event) {
 
 /*Place Order*/
 $("#btnPlaceOrder").click(function () {
-    let discount = $("#txtDiscount").val();
-    if (discount === "") {
-        discount = "0";
-    }
-    let total = $("#txtTotal").val();
-    let oid = $("#order-id").text().substring(1);
-    let date = new Date().toISOString().slice(0, 10);
-
-    orderTable.push(new Orders(oid, customerId, date, discount, total));
-    addValuesToCmbOrderID_ManageOrdersForm("<option>"+oid+"</option>");
-
     let table = document.getElementById('tblCart-body');
     let count = table.rows.length;
-    for(let i=0; i<count; i++) {
-        let code = table.rows[i].cells[0].innerText;
-        let qty = table.rows[i].cells[2].innerText;
-        let totAmount = table.rows[i].cells[3].innerText;
+    if (count > 0) {
+        let discount = $("#txtDiscount").val();
+        if (discount === "") {
+            discount = "0";
+        }
+        let total = $("#txtTotal").val();
+        let oid = $("#order-id").text().substring(1);
+        let date = new Date().toISOString().slice(0, 10);
 
-        orderDetailTable.push(new OrderDetail(oid, code, qty, totAmount));
+        orderTable.push(new Orders(oid, customerId, date, discount, total));
+        addValuesToCmbOrderID_ManageOrdersForm("<option>" + oid + "</option>");
 
-        for (let j = 0; j < itemTable.length; j++) {
-            if (itemTable[j].getCode() === code) {
-                let oldQty = parseInt(itemTable[j].getQty());
-                let newQty = oldQty - parseInt(qty);
-                itemTable[j].setQty(newQty);
+        for (let i = 0; i < count; i++) {
+            let code = table.rows[i].cells[0].innerText;
+            let qty = table.rows[i].cells[2].innerText;
+            let totAmount = table.rows[i].cells[3].innerText;
+
+            orderDetailTable.push(new OrderDetail(oid, code, qty, totAmount));
+
+            for (let j = 0; j < itemTable.length; j++) {
+                if (itemTable[j].getCode() === code) {
+                    let oldQty = parseInt(itemTable[j].getQty());
+                    let newQty = oldQty - parseInt(qty);
+                    itemTable[j].setQty(newQty);
+                }
             }
         }
-    }
 
-    alert("Order Placed successfully!");
-    getAllItemsOnPlaceOrderForm();
-    generateOrderID();
-    setCustomerDetailsOnPlaceOrder("", "", "");
-    $("#tblCart > tbody").empty();
-    $("#cmbCustomers").get(0).selectedIndex = 0;
-    $("#txtDiscount").val("");
-    $("#txtTotal").val("");
+        alert("Order Placed successfully!");
+        getAllItemsOnPlaceOrderForm();
+        generateOrderID();
+        setCustomerDetailsOnPlaceOrder("", "", "");
+        $("#tblCart > tbody").empty();
+        $("#cmbCustomers").get(0).selectedIndex = 0;
+        $("#txtDiscount").val("");
+        $("#txtTotal").val("");
+        customerId = "none";
+    } else {
+        alert("Cart is empty!");
+    }
+});
+
+/*Regex*/
+function checkPlaceOrderRegex(pattern, value) {
+    return pattern.test(value);
+}
+
+/*QTY filed validate*/
+$("#txtQTY").on("keyup", function () {
+    let qty = $("#txtQTY");
+    if (checkPlaceOrderRegex(/^[0-9]{1,}$/, qty.val())) {
+        qty.css({
+            "border" : "none"
+        });
+    } else {
+        qty.css({
+            "border" : "2px solid red"
+        });
+    }
+});
+
+/*Discount filed validate*/
+$("#txtDiscount").on("keyup", function () {
+    let discount = $("#txtDiscount");
+    if (checkPlaceOrderRegex(/^[0-9.]{1,}$/, discount.val())) {
+        discount.css({
+            "border" : "none"
+        });
+    } else {
+        discount.css({
+            "border" : "2px solid red"
+        });
+    }
 });
